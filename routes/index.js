@@ -1,29 +1,51 @@
-const Router = require('koa-router')
-const { CompanyController, JobController } = require('../controllers')
+const Router = require("koa-router");
+const {
+  CompanyController,
+  JobController,
+  ApplicationController,
+  UserController,
+} = require("../controllers");
 
-const router = new Router()
+const authenticationPolicy = require("../policies/authentication.policy");
+
+const router = new Router();
 
 // define all your company routes
-router.post('/companies', CompanyController.create)
+router.post("/companies", authenticationPolicy, CompanyController.create);
 
-router.get('/companies', CompanyController.find)
+router.get("/companies", authenticationPolicy, CompanyController.find);
 
-router.get('/companies/:id', CompanyController.findOne)
+router.get("/companies/:id", authenticationPolicy, CompanyController.findOne);
 
-router.delete('/companies/:id', CompanyController.remove)
+router.delete("/companies/:id", authenticationPolicy, CompanyController.remove);
 
-router.put('/companies/:id', CompanyController.update)
+router.put("/companies/:id", authenticationPolicy, CompanyController.update);
 
 // define all your job routes
-router.post('/jobs', JobController.create)
+router.post("/jobs", authenticationPolicy, JobController.create);
 
-router.get('/jobs', JobController.find)
+router.get("/jobs", authenticationPolicy, JobController.find);
 
-router.get('/jobs/:id', JobController.findOne)
+router.get("/jobs/:id", authenticationPolicy, JobController.findOne);
 
-router.delete('/jobs/:id', JobController.remove)
+router.delete("/jobs/:id", authenticationPolicy, JobController.remove);
 
-router.put('/jobs/:id', JobController.update)
+router.put("/jobs/:id", authenticationPolicy, JobController.update);
 
+// define all your application routes
+router.post(
+  "/applications",
+  authenticationPolicy,
+  ApplicationController.create
+);
 
-module.exports = router
+// router.get("/applications", ApplicationController.find);
+
+// router.get("/applications/:id", ApplicationController.findOne);
+
+// define all your user routes
+router.post("/signup", UserController.signup);
+
+router.get("/login", UserController.login);
+
+module.exports = router;

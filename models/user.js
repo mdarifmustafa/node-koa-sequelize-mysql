@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Job extends Model {
+  class User extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,24 +13,19 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Job.init({
-    title: DataTypes.STRING
+  User.init({
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    password: { 
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
-    modelName: 'Job',
+    modelName: 'User',
   });
-
-  Job.associate = models => {
-    Job.belongsTo(models.Company, {
-      foreignKey: {
-        allowNull: false
-      }
-    })
-
-    Job.belongsToMany(models.Candidate, {
-      through: 'Application'
-    })
-  }
-
-  return Job;
+  return User;
 };

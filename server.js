@@ -7,7 +7,7 @@ const app = new Koa();
 const db = require("./models");
 
 db.sequelize
-// .sync({ force: true })
+  // .sync({ force: true })
   .sync()
   .then(() => console.log("models synced"))
   .catch((err) => console.log(err));
