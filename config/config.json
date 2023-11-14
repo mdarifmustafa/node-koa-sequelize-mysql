@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Password$123",
+    "database": "koa_api_db_dev",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Password$123",
+    "database": "koa_api_db_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Password$123",
+    "database": "koa_api_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
