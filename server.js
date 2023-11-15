@@ -1,5 +1,6 @@
 const Koa = require("koa");
 const bodyParser = require("koa-parser");
+const serve = require("koa-static");
 const router = require("./routes");
 
 const app = new Koa();
@@ -14,7 +15,11 @@ db.sequelize
 
 app.context.db = db;
 
-app.use(bodyParser()).use(router.routes()).use(router.allowedMethods());
+app
+  .use(bodyParser())
+  .user(serve(__dirname + '/public'))
+  .use(router.routes())
+  .use(router.allowedMethods());
 
 const PORT = 4000;
 app.listen(PORT);
