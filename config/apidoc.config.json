@@ -1,0 +1,12 @@
+{
+  "name": "Job Portal API Documentation",
+  "version": "1.0.0",
+  "description": "API Job Portal Application",
+  "title": "API Documentation",
+  "url": "http://localhost:4000",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true,
+    "forceLanguage": "en"
+  }
+}
