@@ -13,6 +13,12 @@ module.exports = {
       ctx.throw(500, `${err} company db creation failed!`);
     }
   },
+
+  /**
+   * @api {get} /companies get all companies
+   * @apiGroup Companies
+   * @apiName companyAll
+   */
   async find(ctx) {
     try {
       ctx.body = await ctx.db.Company.findAll({
@@ -25,6 +31,13 @@ module.exports = {
       ctx.throw(500, `${err} companies fetching failed!`);
     }
   },
+
+  /**
+   * @api {get} /companies/id get specific company by id
+   * @apiGroup Companies
+   * @apiName companyGet
+   * @apiParam {String} id Please provide company id in params
+   */
   async findOne(ctx) {
     try {
       const company = await ctx.db.Company.findOne({
@@ -39,6 +52,13 @@ module.exports = {
       ctx.throw(404, `${err?.message}`);
     }
   },
+
+  /**
+   * @api {delete} /companies/id remove specific company by id
+   * @apiGroup Companies
+   * @apiName companyDelete
+   * @apiParam {String} id Please provide company id in params
+   */
   async remove(ctx) {
     try {
       const result = await ctx.db.Company.destroy({
@@ -54,6 +74,13 @@ module.exports = {
       ctx.throw(404, `${err?.message}`);
     }
   },
+
+  /**
+   * @api {put} /companies/id update company specific by id
+   * @apiGroup Companies
+   * @apiName companyUpdate
+   * @apiParam {String} id Please provide company id in params
+   */
   async update(ctx) {
     try {
       const { name, city, address } = ctx.request.body;

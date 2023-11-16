@@ -17,7 +17,8 @@ app.context.db = db;
 
 app
   .use(bodyParser())
-  .user(serve(__dirname + '/public'))
+  .use(serve(__dirname + '/public'))
+  .use(serve(__dirname + '/static'))
   .use(router.routes())
   .use(router.allowedMethods());
 

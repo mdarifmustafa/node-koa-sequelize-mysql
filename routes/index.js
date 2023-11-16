@@ -6,7 +6,7 @@ const {
   UserController,
 } = require("../controllers");
 
-const authenticationPolicy = require("../policies/authentication.policy");
+const authenticationPolicy = require("../policies/authentication.rule");
 
 const router = new Router();
 
